@@ -1,10 +1,9 @@
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const path = require("path");
-const webpack = require("webpack");
-const {merge} = require("webpack-merge");
-const common = require("./webpack.common.js");
-
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const { merge } = require('webpack-merge');
+const common = require('./webpack.common.js');
 
 module.exports = merge(common, {
   entry: {
@@ -16,31 +15,31 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
-        test: /\.(js|mjs|jsx)$/, //regex to see which files to run babel on
+        test: /\.(js|mjs|jsx)$/, // regex to see which files to run babel on
         exclude: /node_modules/,
         use: {
           loader: require.resolve('babel-loader'),
           options: {
-            presets: ['@babel/preset-env', '@babel-preset-react'],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
             plugins: [
               require.resolve('react-refresh/babel'),
-            ].filter(Boolean)
-          }
-        }
-      } 
-    ]
+            ].filter(Boolean),
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin({
       overlay: {
-        sockIntegration: "whm",
-      }
+        sockIntegration: 'whm',
+      },
     }),
     new HtmlWebpackPlugin({
       // name this file main, so that it does not automatically requested as a static file
       filename: './main.html',
       template: path.resolve(__dirname, '..', 'src', 'index.html'),
-    })
+    }),
   ].filter(Boolean),
 });
