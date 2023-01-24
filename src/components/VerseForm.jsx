@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-export default function VerseForm(props) {
+export default function VerseForm({ setVerse }) {
   const [input, setInput] = useState('');
 
   const handleInputChange = (event) => {
@@ -12,7 +12,7 @@ export default function VerseForm(props) {
     event.preventDefault();
     console.log('submitted');
     console.log(input);
-    props.setVerse(input);
+    setVerse(input);
     setInput('');
   };
 

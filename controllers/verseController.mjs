@@ -10,7 +10,7 @@ const queryParam = 'John+11';
 
 // 3. AXIOS CALL
 export default function initVerseController() {
-  const fetchPassage = async () => {
+  const fetchPassage = async (req, res) => {
     try {
       console.log(API_URL);
       const config = {
@@ -33,7 +33,7 @@ export default function initVerseController() {
 
       const response = await axios(config);
       console.log(response.data);
-      return response.data.passages[0];
+      res.send(response.data.passages[0]);
     } catch (error) {
       console.log(error.message);
     }
