@@ -5,7 +5,9 @@ import './styles.scss';
 import App from './App.jsx';
 
 // create an element that React will render stuff into
+document.body.style.margin = '0px';
 const rootElement = document.createElement('div');
+rootElement.style.margin = '0px';
 
 // put that element onto the page
 document.body.appendChild(rootElement);
