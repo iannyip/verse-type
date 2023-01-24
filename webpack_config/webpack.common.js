@@ -13,12 +13,15 @@ module.exports = {
         test: /\.(scss|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-          },
+          'css-loader',
           'sass-loader',
         ],
       },
     ],
   },
+  // devServer: {
+  //   static: 'dist',
+  //   watchContentBase: true,
+  // },
+
 };
